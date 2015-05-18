@@ -53,27 +53,27 @@ the directory.
 `NamedEntityTask` - renamed `FeatureTwoTask` to fully describe its purpose.
 
 `NLPDataConfigTask` - uses `DirToArrayListStrategy` to read "nlp_data" directory
- and creates `CallableConfig` list, one instance of CallableConfig for each
- input file under the directory.
+and creates `CallableConfig` list, one instance of CallableConfig for each
+input file under the directory.
 
- `CallableTask` - wraps any instance of `Task` interface into a Callable
- interface. Any tasks wrapped into CallableTask can now be passed to the thread
- pool for processing.
+`CallableTask` - wraps any instance of `Task` interface into a Callable
+interface. Any tasks wrapped into CallableTask can now be passed to the thread
+pool for processing.
 
- `ParallelProcessFileTask` - renamed `FeatureOneTask` to fully describe its
- purpose. This task will be wrapped into `CallableTask` and passed to the
- thread pool for processing.
+`ParallelProcessFileTask` - renamed `FeatureOneTask` to fully describe its
+purpose. This task will be wrapped into `CallableTask` and passed to the
+thread pool for processing.
 
- `ThreadPoolTask` - this task creates a pool of threads equal to the number of
- input files located under "nlp_data" dir. Each thread uses an instance of
- `ParallelProcessFileTask` which has been initialized with `CallableConfig`
- instance and wrapped into `CallableTask`. `Future<TextFile>` then processed
- into ArrayList<TextFile> and passed back to caller for aggregation.
+`ThreadPoolTask` - this task creates a pool of threads equal to the number of
+input files located under "nlp_data" dir. Each thread uses an instance of
+`ParallelProcessFileTask` which has been initialized with `CallableConfig`
+instance and wrapped into `CallableTask`. `Future<TextFile>` then processed
+into ArrayList<TextFile> and passed back to caller for aggregation.
 
- `XMLAggregateResultTask` - aggregates ArrayList<TextFile> into a single
- XML Document and outputs into aggregateOutput.xml file and to console.
+`XMLAggregateResultTask` - aggregates ArrayList<TextFile> into a single
+XML Document and outputs into aggregateOutput.xml file and to console.
 
- #### Modified Classes
+#### Modified Classes
 
 `com.dr.nlp.sl.Main` - now runs tasks in the following order:
 
